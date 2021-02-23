@@ -249,6 +249,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <p v-if='error' class="error">
                                 {{error}}
                             </p>
+                            <p v-if='msg' class="success">
+                                {{msg}}
+                            </p>
                         </div>
                     </div>
                     <div class="offset-2"></div>
@@ -354,6 +357,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             el: "#app",
             data: {
                 error: '',
+                msg: '',
                 send: false,
                 selected: [],
                 name: "",
@@ -380,6 +384,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             },
             methods: {
                 validate() {
+                    this.error = ''
+                    this.msg = ''
+
+
                     this.send = true
                     let name = this.name
                     let phone = this.phone
@@ -399,6 +407,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                 },
                 call() {
+                    this.error = ''
 
                     console.log("calling axios");
                     const data = {
@@ -412,8 +421,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         .then((response) => {
                             console.log(response);
                             this.send = false
+                            this.msg = 'Registration successfull!'
+
                         })
                         .catch((err) => {
+
                             console.error(err);
                             this.send = true
                         });

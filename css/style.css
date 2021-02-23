@@ -1447,6 +1447,10 @@ ul.social-iconsv2 li a:hover {
 }
 
 .error {
-    /* background-color: red; */
     color: red;
+}
+
+.success {
+    color: green;
+    font-weight: 600;
 }
